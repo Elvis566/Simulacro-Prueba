@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\categoriaControler;
 use App\Http\Controllers\registroControler;
 use App\Models\registro;
 use Illuminate\Http\Request;
@@ -18,5 +19,6 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('registroGasto',[registroControler::class,'saveGastos']);
 Route::get('getRegistro',[registroControler::class, 'getAllRegistros']);
-Route::get('getRegistro/busqueda/{fechaB}',[registroControler::class, 'busqueda']);
+Route::get('getRegistro/busqueda',[registroControler::class, 'busqueda']);
 Route::get('getCategorizados',[registroControler::class, 'getDatosCategorizados']);
+Route::get('getCateogorias', [categoriaControler::class, 'cargarCategorias']);

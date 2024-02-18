@@ -44,7 +44,7 @@ class registroControler extends Controller
           }
          
           return response()->json([
-            'message'=>'Usuario creado correctamente',
+            'message'=>'Gasto creado correctamente',
             'data'=>$registro
           ],201);
         
@@ -53,7 +53,7 @@ class registroControler extends Controller
 
     public  function getAllRegistros(){
         $registro = registro::all();
-        return response()->json($registro, 200);
+        return response()->json(['registro'=>$registro], 200);
 
     }
 
@@ -67,8 +67,8 @@ class registroControler extends Controller
   }
   
 
-    public function busqueda($fecha){
-        $fecha = $fecha;
+    public function busqueda(Request $request){
+        $fecha = $request->fecha;
         // Verificar si se proporcionó una fecha válida
         if (!$fecha) {
             return response()->json([

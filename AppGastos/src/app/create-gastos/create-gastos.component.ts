@@ -10,12 +10,18 @@ import { GastosServiciosService } from '../Servicios/gastos-servicios.service';
 })
 export class CreateGastosComponent {
   listaCategorias: any
+  formulario : any
   constructor( private gastos:GastosServiciosService){}
   
+  ngOnInit(){
+    this.trearCategorias();
+  }
+
   trearCategorias(){
     this.gastos.getCategorias().subscribe({
       next : (dato:any)=>{
         this.listaCategorias = dato.categorias;
+        console.log(this.listaCategorias[1].id);
       },
       error:(e)=>{
         console.log('Error al obtener datos');
@@ -32,5 +38,18 @@ export class CreateGastosComponent {
         console.log(e);
       }
     })
+  }
+
+   limpiarFormulario() {
+    // Obtener el formulario por su ID
+     this.formulario = document.getElementById("miFormulario");
+
+    // Recorrer los elementos del formulario y establecer su valor a una cadena vacía
+    for (var i = 0; i < this.formulario.elements.length; i++) {
+      var elemento = this.formulario.elements[i];
+      if (elemento.type !== "button") { // Excluir el botón del formulario
+        elemento.value = "";
+      }
+    }
   }
 }

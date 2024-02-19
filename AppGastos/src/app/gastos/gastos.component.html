@@ -1,4 +1,13 @@
 <p>gastos works!</p>
+<form action="">
+  <div>
+    <label for="">Ingrese fecha a buscar</label><br>
+    <input type="text" #fecha placeholder="23/03/2030">
+  </div>
+  <button type="button" (click)="busqueda(fecha)">Buscar</button>
+</form>
 @for(item of listaGastos; track $index){ 
     <div>{{item.descripcion}}</div>
   }
+
+  

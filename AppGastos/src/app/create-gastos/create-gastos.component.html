@@ -1,0 +1,24 @@
+<form action="" id="miFormulario">
+    <div>
+        <label for="" required >Descripcion</label>
+        <input #descripcion type="text">
+    </div>
+    <div>
+        <label for="">Monto</label>
+        <input type="number" #monto required>
+    </div>
+    <div>
+        <label for="">Fecha de transapcion</label>
+        <input type="date" #fechaT>
+    </div>
+    <div>
+        <label for="">Categoria</label>
+       <select name="" id="" #categoria_id>
+        @for(item of listaCategorias; track $index){ 
+            <option value="{{item.id}}">{{item.categoria}}</option>
+          }
+       </select>
+
+       <button (click)="registerGastos(descripcion, monto, fechaT, categoria_id) " (click)="limpiarFormulario()"  type="button">Guardar registro</button>
+    </div>
+</form>
